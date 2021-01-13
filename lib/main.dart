@@ -1,3 +1,6 @@
+import 'package:expensee/components/appbar.dart';
+import 'package:expensee/components/boringfeat.dart';
+import 'package:expensee/components/colored_categories.dart';
 import 'package:expensee/constants.dart';
 import 'package:expensee/models/transaction.dart';
 import 'package:expensee/widgets/chart.dart';
@@ -45,20 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _usertransaction = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New Shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-  ];
+  final List<Transaction> _usertransaction = [];
 
   List<Transaction> get _recentTransactions {
     return _usertransaction.where(
@@ -111,78 +101,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: klighterGreyColor,
-
-        // appBar: AppBar(
-        //   title: Text('Personal Expenses'),
-        //   actions: <Widget>[
-        //     IconButton(
-        //       icon: Icon(Icons.add),
-        //       onPressed: () => _startAddTransaction(context),
-        //     ),
-        //   ],
-        // ),
         body: SingleChildScrollView(
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hello,',
-                          style: TextStyle(color: kDarkColor, fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          'Johnie',
-                          style: TextStyle(
-                              color: kDarkColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.history),
-                      onPressed: null,
-                      color: kDarkerGreyColor,
-                      iconSize: 35,
-                    )
-                  ],
-                ),
+                child: NotsoAppbarish(),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30.0, right: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Expenses on',
-                      style: TextStyle(color: Colors.blueGrey, fontSize: 16),
-                    ),
-                    Container(
-                      height: 30,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        color: kDarkerGreyColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Feb 12',
-                          style: TextStyle(color: Colors.blueGrey),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: StiffFeature(),
               ),
               SizedBox(
                 height: 10,
@@ -191,78 +120,43 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 15,
               ),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: CircleAvatar(
-                            radius: 8,
-                            backgroundColor: kDarkerGreyColor,
-                          ),
-                        ),
-                        Text(
-                          'Balance',
-                          style: TextStyle(color: Colors.blueGrey),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: CircleAvatar(
-                            radius: 8,
-                            backgroundColor: kprimaryColor,
-                          ),
-                        ),
-                        Text(
-                          'Spending',
-                          style: TextStyle(color: Colors.blueGrey),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              ColoredDistinguishers(),
               SizedBox(
                 height: 20,
               ),
               Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
+                height: 250,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Center(
-                          child: Text(
-                            'Expenses',
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.blueGrey),
-                          ),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Center(
+                        child: Text(
+                          'Expenses',
+                          style:
+                              TextStyle(fontSize: 16, color: Colors.blueGrey),
                         ),
                       ),
-                      SizedBox(
-                        width: 150,
-                        child: Divider(
-                          thickness: 3,
-                          color: kDarkerGreyColor,
-                          height: 10,
-                        ),
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: Divider(
+                        thickness: 3,
+                        color: kDarkerGreyColor,
+                        height: 10,
                       ),
-                      TransactionList(_usertransaction, _deleteTransaction),
-                    ],
-                  )),
+                    ),
+                    TransactionList(_usertransaction, _deleteTransaction),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
