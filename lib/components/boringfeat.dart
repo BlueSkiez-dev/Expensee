@@ -1,10 +1,14 @@
 import 'package:expensee/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class StiffFeature extends StatelessWidget {
-  const StiffFeature({
-    Key key,
-  }) : super(key: key);
+class StiffFeature extends StatefulWidget {
+  @override
+  _StiffFeatureState createState() => _StiffFeatureState();
+}
+
+class _StiffFeatureState extends State<StiffFeature> {
+  DateTime now = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +27,11 @@ class StiffFeature extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
-            child: Text(
-              'Feb 12',
-              style: TextStyle(color: Colors.blueGrey),
+            child: FittedBox(
+              child: Text(
+                DateFormat.MEd().format(now).substring(0, 3),
+                style: TextStyle(color: Colors.blueGrey),
+              ),
             ),
           ),
         ),

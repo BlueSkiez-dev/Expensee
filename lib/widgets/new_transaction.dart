@@ -1,3 +1,4 @@
+import 'package:expensee/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -81,7 +82,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   FlatButton(
-                    textColor: Theme.of(context).primaryColor,
+                    textColor: kprimaryColor,
                     onPressed: _presentDatePicker,
                     child: Text(
                       'Choose Date!',
@@ -91,7 +92,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 ],
               ),
               RaisedButton(
-                color: Theme.of(context).primaryColor,
+                color: kprimaryColor,
                 onPressed: _submitData,
                 child: Text(
                   'Add Transaction',
